@@ -57,21 +57,20 @@ export default function GuestsPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow border overflow-hidden">
+      <div className="bg-white rounded-xl shadow border overflow-x-auto">
 
-        <table className="w-full text-sm">
+        <table className="min-w-full table-fixed text-sm">
 
           <thead className="bg-gray-100 border-b">
 
             <tr>
-              <th className="w-[14%] px-3 py-3 text-left">Guest</th>
-              <th className="w-[14%] px-3 py-3 text-left">Room</th>
-              <th className="w-[13%] px-3 py-3 text-left">Phone</th>
-              <th className="w-[20%] px-3 py-3 text-left">Email</th>
-              <th className="w-[10%] px-3 py-3 text-left">Check-In</th>
-              <th className="w-[10%] px-3 py-3 text-left">Check-Out</th>
-              <th className="w-[7%] px-3 py-3 text-center">Guests</th>
-              <th className="w-[12%] px-3 py-3 text-center">Status</th>
+              <th className="w-[18%] px-3 py-3 text-left">Guest</th>
+              <th className="w-[18%] px-3 py-3 text-left">Room</th>
+              <th className="w-[15%] px-3 py-3 text-left">Phone</th>
+              <th className="w-[15%] px-3 py-3 text-left">Check-In</th>
+              <th className="w-[15%] px-3 py-3 text-left">Check-Out</th>
+              <th className="w-[8%] px-3 py-3 text-center">Guests</th>
+              <th className="w-[11%] px-3 py-3 text-center">Status</th>
             </tr>
 
           </thead>
@@ -86,14 +85,14 @@ export default function GuestsPage() {
               >
 
                 <td
-                  className="px-3 py-4 truncate"
+                  className="max-w-[140px] px-3 py-4 truncate"
                   title={guest.full_name}
                 >
                   {guest.full_name}
                 </td>
 
                 <td
-                  className="px-3 py-4 truncate"
+                  className="max-w-[120px] px-3 py-4 truncate"
                   title={guest.room}
                 >
                   {guest.room}
@@ -103,12 +102,7 @@ export default function GuestsPage() {
                   {guest.phone}
                 </td>
 
-                <td
-                  className="px-3 py-4 truncate"
-                  title={guest.email}
-                >
-                  {guest.email}
-                </td>
+               
 
                 <td className="px-3 py-4">
                   {guest.check_in}

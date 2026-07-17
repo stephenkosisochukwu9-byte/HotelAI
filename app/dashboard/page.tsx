@@ -114,102 +114,105 @@ export default function Dashboard() {
 
       <div className="bg-white rounded-xl shadow overflow-hidden">
 
-        <table className="w-full">
+       <div className="bg-white rounded-xl shadow overflow-x-auto whitespace-nowrap">
 
-          <thead className="bg-blue-600 text-white">
+  <table className="min-w-full text-sm">
 
-            <tr>
-              <th className="p-4 text-left">Guest</th>
-              <th className="p-4 text-left">Email</th>
-              <th className="p-4 text-left">Phone</th>
-              <th className="p-4 text-left">Room</th>
-              <th className="p-4 text-left">Check In</th>
-              <th className="p-4 text-left">Check Out</th>
-              <th className="p-4 text-left">Guests</th>
-              <th className="p-4 text-left">Status</th>
-              <th className="p-4 text-left">Action</th>
-            </tr>
+    <thead className="bg-blue-600 text-white">
 
-          </thead>
+      <tr>
+        <th className="w-[20%] p-4 text-left">Guest</th>
+        <th className="w-[16%] p-4 text-left">Phone</th>
+        <th className="w-[18%] p-4 text-left">Room</th>
+        <th className="w-[14%] p-4 text-left">Check In</th>
+        <th className="w-[14%] p-4 text-left">Check Out</th>
+        <th className="w-[6%] p-4 text-center">Guests</th>
+        <th className="w-[12%] p-4 text-center">Status</th>
+        <th className="w-[12%] p-4 text-center">Action</th>
+      </tr>
 
-          <tbody>
+    </thead>
 
-            {bookings.map((booking) => (
+    <tbody>
 
-              <tr
-                key={booking.id}
-                className="border-b"
-              >
-                <td className="p-4">
-                  {booking.full_name}
-                </td>
+      {bookings.map((booking) => (
 
-                <td className="p-4">
-                   {booking.email}
-                </td>
+        <tr
+          key={booking.id}
+          className="border-b hover:bg-gray-50 transition"
+        >
 
-                <td className="p-4">
-                   {booking.phone}
-                </td>
+          <td
+            className="max-w-[160px] p-4 truncate"
+            title={booking.full_name}
+          >
+            {booking.full_name}
+          </td>
 
-                <td className="p-4">
-                  {booking.room}
-                </td>
+          <td className="p-4">
+            {booking.phone}
+          </td>
 
-               <td className="p-4">
-  {new Date(booking.check_in).toLocaleDateString()}
-</td>
+          <td
+            className="max-w-[140px] p-4 truncate"
+            title={booking.room}
+          >
+            {booking.room}
+          </td>
 
-<td className="p-4">
-  {new Date(booking.check_out).toLocaleDateString()}
-</td>
+          <td className="p-4">
+            {new Date(booking.check_in).toLocaleDateString()}
+          </td>
 
-                <td className="p-4">
-                  {booking.guests}
-                </td>
+          <td className="p-4">
+            {new Date(booking.check_out).toLocaleDateString()}
+          </td>
 
-                <td className="p-4">
+          <td className="p-4 text-center">
+            {booking.guests}
+          </td>
 
-                  <select
-                    value={booking.status}
-                    onChange={(e) =>
-                      updateStatus(
-                        booking.id,
-                        e.target.value
-                      )
-                    }
-                    className="border rounded-lg p-2"
-                  >
-                    <option>Pending</option>
-                    <option>Confirmed</option>
-                    <option>Checked In</option>
-                    <option>Checked Out</option>
-                    <option>Cancelled</option>
-                  </select>
+          <td className="p-4 text-center">
 
-                </td>
+            <select
+              value={booking.status}
+              onChange={(e) =>
+                updateStatus(
+                  booking.id,
+                  e.target.value
+                )
+              }
+              className="border rounded-lg p-2 text-sm"
+            >
+              <option>Pending</option>
+              <option>Confirmed</option>
+              <option>Checked In</option>
+              <option>Checked Out</option>
+              <option>Cancelled</option>
+            </select>
 
-                <td className="p-4">
+          </td>
 
-                  <button
-                    onClick={() =>
-                      deleteBooking(booking.id)
-                    }
-                    className="bg-red-600 text-white px-3 py-2 rounded-lg"
-                  >
-                    Delete
-                  </button>
+          <td className="p-4 text-center">
 
-                </td>
+            <button
+              onClick={() => deleteBooking(booking.id)}
+              className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm"
+            >
+              Delete
+            </button>
 
-              </tr>
+          </td>
 
-            ))}
+        </tr>
 
-          </tbody>
+      ))}
 
-        </table>
+    </tbody>
 
+  </table>
+
+</div>
       </div>
 
     </main>

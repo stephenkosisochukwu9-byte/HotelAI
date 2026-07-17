@@ -19,7 +19,7 @@ export default function DashboardLayout({
   const menu = [
     {
       name: "Dashboard",
-      href: "/dashboard",
+      href: "/dashboard/bookings",
       icon: "📊",
     },
     {
@@ -60,10 +60,14 @@ export default function DashboardLayout({
               key={item.name}
               href={item.href}
               className={`block rounded-lg px-4 py-3 transition ${
-                pathname === item.href
-                  ? "bg-blue-600"
-                  : "hover:bg-slate-700"
-              }`}
+  item.href === "/dashboard"
+    ? pathname === "/dashboard"
+      ? "bg-blue-600"
+      : "hover:bg-slate-700"
+    : pathname.startsWith(item.href)
+    ? "bg-blue-600"
+    : "hover:bg-slate-700"
+}`}
             >
               {item.icon} {item.name}
             </Link>
@@ -80,7 +84,7 @@ export default function DashboardLayout({
 
       </aside>
 
-      <main className="flex-1 ml-64 h-screen overflow-y-auto p-8">
+      <main className="flex-1 min-w-0 ml-64 h-screen overflow-auto p-8">
         {children}
       </main>
 
