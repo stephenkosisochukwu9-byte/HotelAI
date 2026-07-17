@@ -84,25 +84,23 @@ function BookingContent() {
   return (
     <main className="min-h-screen bg-gray-100 py-12">
       <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-10">
-
-        <h1 className="text-4xl font-bold mb-6">
+        <h1 className="text-4xl font-bold mb-6 text-gray-900">
           Hotel Booking
         </h1>
 
         {roomData && (
           <div className="mb-8">
-
             <img
               src={roomData.image}
               alt={roomData.name}
               className="w-full h-72 object-cover rounded-xl"
             />
 
-            <h2 className="text-3xl font-bold mt-6">
+            <h2 className="text-3xl font-bold mt-6 text-gray-900">
               {roomData.name}
             </h2>
 
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-700 mt-2">
               {roomData.description}
             </p>
 
@@ -110,22 +108,20 @@ function BookingContent() {
               ₦{roomData.price.toLocaleString()}
             </p>
 
-            <p className="text-gray-500">
+            <p className="text-gray-700">
               Maximum Guests: {roomData.guests}
             </p>
-
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
-
           <input
             type="text"
             name="name"
             value={form.name}
             placeholder="Full Name"
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
@@ -135,7 +131,7 @@ function BookingContent() {
             value={form.email}
             placeholder="Email"
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
@@ -145,7 +141,7 @@ function BookingContent() {
             value={form.phone}
             placeholder="Phone Number"
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
@@ -154,16 +150,16 @@ function BookingContent() {
             name="checkIn"
             value={form.checkIn}
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
-          />
+            />
 
           <input
             type="date"
             name="checkOut"
             value={form.checkOut}
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
@@ -173,17 +169,16 @@ function BookingContent() {
             value={form.guests}
             min="1"
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
             Confirm Booking
           </button>
-
         </form>
       </div>
     </main>
