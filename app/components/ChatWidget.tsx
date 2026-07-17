@@ -53,7 +53,7 @@ export default function ChatWidget() {
           text: data.reply,
         },
       ]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -69,21 +69,39 @@ export default function ChatWidget() {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-blue-600 text-white text-3xl shadow-lg hover:bg-blue-700"
+        className="fixed bottom-5 right-5 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-blue-600 text-white text-2xl md:text-3xl shadow-xl hover:bg-blue-700"
       >
         💬
       </button>
 
       {/* Chat Window */}
       {open && (
-        <div className="fixed bottom-24 right-6 w-96 bg-white rounded-2xl shadow-2xl border overflow-hidden">
-
-          <div className="bg-blue-600 text-white p-4 font-bold">
-            HotelAI Assistant
+        <div
+          className="
+            fixed
+            bottom-24
+            left-1/2
+            -translate-x-1/2
+            w-[92%]
+            max-w-md
+            h-[70vh]
+            md:h-[520px]
+            bg-white
+            rounded-2xl
+            shadow-2xl
+            border
+            flex
+            flex-col
+            z-50
+          "
+        >
+          {/* Header */}
+          <div className="bg-blue-600 text-white p-4 font-bold rounded-t-2xl">
+            🤖 HotelAI Assistant
           </div>
 
-          <div className="p-4 h-80 overflow-y-auto flex flex-col gap-3">
-
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -96,11 +114,10 @@ export default function ChatWidget() {
                 {msg.text}
               </div>
             ))}
-
           </div>
 
+          {/* Input */}
           <div className="border-t p-3 flex gap-2">
-
             <input
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -109,19 +126,17 @@ export default function ChatWidget() {
                   sendMessage();
                 }
               }}
-              className="flex-1 border rounded-lg px-3 py-2 outline-none"
               placeholder="Type your message..."
+              className="flex-1 border rounded-lg px-3 py-2 text-gray-900 outline-none"
             />
 
             <button
               onClick={sendMessage}
-              className="bg-blue-600 text-white px-4 rounded-lg"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
               Send
             </button>
-
           </div>
-
         </div>
       )}
     </>
