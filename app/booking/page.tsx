@@ -1,9 +1,9 @@
 "use client";
 
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
-export default function BookingPage() {
+function BookingContent() {
   const searchParams = useSearchParams();
   const room = searchParams.get("room");
 
@@ -117,10 +117,7 @@ export default function BookingPage() {
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="space-y-5">
 
           <input
             type="text"
@@ -188,8 +185,15 @@ export default function BookingPage() {
           </button>
 
         </form>
-
       </div>
     </main>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<div className="p-10">Loading booking...</div>}>
+      <BookingContent />
+    </Suspense>
   );
 }
