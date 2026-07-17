@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import Navbar from "./components/menu";
 import ChatWidget from "./components/ChatWidget";
 import RoomCard from "./components/RoomCard";
@@ -12,15 +13,14 @@ type Room = {
   available: boolean;
 };
 export default async function Home() {
- const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+ const { data: rooms, error } = await supabase
+  .from("rooms")
+  .select("*")
+  .order("id");
 
-const res = await fetch(`${baseUrl}/api/rooms`, {
-  cache: "no-store",
-});
-
-const rooms: Room[] = await res.json();
+if (error) {
+  throw new Error(error.message);
+}
   return (
     <main className="min-h-screen bg-white">
 
