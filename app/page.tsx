@@ -12,7 +12,11 @@ type Room = {
   available: boolean;
 };
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/rooms", {
+ const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
+const res = await fetch(`${baseUrl}/api/rooms`, {
   cache: "no-store",
 });
 
