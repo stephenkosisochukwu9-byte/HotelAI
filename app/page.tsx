@@ -27,7 +27,7 @@ if (error) {
       <Navbar />
 
      <section
-  className="relative  min-h-screen bg-cover bg-center bg-fixed"
+  className="relative  min-h-screen bg-cover bg-center "
   style={{
     backgroundImage:
       "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1800')",
