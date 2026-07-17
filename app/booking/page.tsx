@@ -145,23 +145,35 @@ function BookingContent() {
             required
           />
 
-          <input
-            type="date"
-            name="checkIn"
-            value={form.checkIn}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-            />
+          <div>
+  <label className="block mb-2 font-medium text-gray-700">
+    Check-in Date
+  </label>
 
-          <input
-            type="date"
-            name="checkOut"
-            value={form.checkOut}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
+  <input
+    type="date"
+    name="checkIn"
+    value={form.checkIn}
+    onChange={handleChange}
+    className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
+</div>
+
+<div>
+  <label className="block mb-2 font-medium text-gray-700">
+    Check-out Date
+  </label>
+
+  <input
+    type="date"
+    name="checkOut"
+    value={form.checkOut}
+    onChange={handleChange}
+    className="w-full border border-gray-300 rounded-lg p-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
+</div>
 
           <input
             type="number"
